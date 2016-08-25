@@ -12,6 +12,11 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update" />
+
+
+            <!-- Hibernate Search configuration -->
+            <property name="hibernate.search.default.directory_provider" value="filesystem" />
+
         </properties>
     </persistence-unit>
 
