@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
@@ -7,17 +8,18 @@
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/price list" />
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
             <property name="hibernate.connection.username" value="postgres" />
-            <property name="hibernate.connection.password" value="2016" />
+            <property name="hibernate.connection.password" value="postgres" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
 
-            <!-- Hibernate Search configuration -->
+            &lt;!&ndash; Hibernate Search configuration &ndash;&gt;
             <property name="hibernate.search.default.directory_provider" value="filesystem" />
 
         </properties>
     </persistence-unit>
 
 </persistence>
+-->

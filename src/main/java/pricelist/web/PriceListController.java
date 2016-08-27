@@ -7,11 +7,14 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 @Controller
-public class PriceList {
-
+public class PriceListController {
 
     @RequestMapping(path = "/")
-    public ModelAndView getAllUser(HttpServletRequest request) throws UnsupportedEncodingException {
+    public ModelAndView filter(HttpServletRequest request) throws UnsupportedEncodingException {
+       request.setCharacterEncoding("UTF-8");
+
+
+
         return new ModelAndView("pricelist");
     }
 }

@@ -33,9 +33,9 @@
                 destroy-method="close">
         <!-- настройки для подключения к базе данных -->
         <beans:property name="driverClassName" value="org.postgresql.Driver"/>
-        <beans:property name="url" value="jdbc:postgresql://localhost:5432/price list"/>
+        <beans:property name="url" value="jdbc:postgresql://localhost:5432/price_list"/>
         <beans:property name="username" value="postgres"/>
-        <beans:property name="password" value="2016"/>
+        <beans:property name="password" value="postgres"/>
     </beans:bean>
 
     <!-- Hibernate 5 SessionFactory Bean definition -->
@@ -44,7 +44,7 @@
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>jschool.dao.User</beans:value>
+                <beans:value>pricelist.dao.PriceListFilter</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -57,13 +57,9 @@
         </beans:property>
     </beans:bean>
 
-    <!--<beans:bean id="userDAO" class="jschool.dao.UserDAOImpl">-->
-        <!--<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>-->
-    <!--</beans:bean>-->
-    <!--<beans:bean id="userService" class="jschool.service.UserServiceImpl">-->
-        <!--<beans:property name="userDAO" ref="userDAO"></beans:property>-->
-    <!--</beans:bean>-->
-
+    <beans:bean id="userDAO" class="pricelist.dao.PriceListDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </beans:bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
