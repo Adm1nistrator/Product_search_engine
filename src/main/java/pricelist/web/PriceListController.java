@@ -34,7 +34,7 @@ public class PriceListController {
     @RequestMapping(path = "/price", method = RequestMethod.GET)
     public ModelAndView filter(@ModelAttribute("filter") @Validated ProductFilter filter) throws UnsupportedEncodingException {
         List<Product> products = this.priceListService.findByFilter(filter);
-        products.forEach(product -> System.out.println(product.getName()));
+      //  products.forEach(product -> System.out.println(product.getName()));
         return new ModelAndView("pricelist");
     }
 
