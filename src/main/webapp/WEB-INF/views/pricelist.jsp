@@ -1,6 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Поиск товаров в прайс-листе</title>
@@ -27,37 +28,38 @@
 <body>
 
 
-
 <div class="container">
     <h4>Прайс лист</h4>
 
     <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s3">
-                    <input id="category" type="text" class="validate">
-                    <label for="category">Категория</label>
+        <form:form method="get" modelAttribute="filter">
+            <div class="col s12">
+                <form:errors path="*" />
+                <div class="row">
+                    <div class="input-field col s3">
+                        <form:input id="category" path="category" type="text" class="validate"/>
+                        <label for="category">Категория</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <form:input id="productName" path="product" type="text" class="validate"/>
+                        <label for="productName">Наименование</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <form:input id="priceFrom" path="priceFrom" type="text" class="validate"/>
+                        <label for="priceFrom">Цена от:</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <form:input id="priceTo" path="priceTo" type="text" class="validate"/>
+                        <label for="priceTo">Цена до:</label>
+                    </div>
                 </div>
-                <div class="input-field col s3">
-                    <input id="product_name" type="text" class="validate">
-                    <label for="product_name">Наименование</label>
-                </div>
-                <div class="input-field col s3">
-                    <input  id="price_from" type="text" class="validate">
-                    <label for="price_from">Цена от:</label>
-                </div>
-                <div class="input-field col s3">
-                    <input id="price_to" type="text" class="validate">
-                    <label for="price_to">Цена до:</label>
-                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Найти
+                    <i class="material-icons right">send</i>
+                </button>
             </div>
-
-        </form>
+        </form:form>
     </div>
 
-    <button class="btn waves-effect waves-light" type="submit" name="action">Найти
-        <i class="material-icons right">send</i>
-    </button>
 
     <table>
         <thead>

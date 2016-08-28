@@ -44,7 +44,8 @@
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>pricelist.dao.PriceListFilter</beans:value>
+                <beans:value>pricelist.dao.Product</beans:value>
+                <beans:value>pricelist.dao.Category</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -57,8 +58,11 @@
         </beans:property>
     </beans:bean>
 
-    <beans:bean id="userDAO" class="pricelist.dao.PriceListDAOImpl">
+    <beans:bean id="priceListDAO" class="pricelist.dao.PriceListDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </beans:bean>
+    <beans:bean id="priceListService" class="pricelist.service.PriceListServiceImpl">
+        <beans:property name="priceListDAO" ref="priceListDAO"></beans:property>
     </beans:bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
