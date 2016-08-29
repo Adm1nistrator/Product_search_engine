@@ -71,12 +71,15 @@
         </thead>
 
         <tbody>
+
+
+        <c:forEach var="current" items="${products}">
         <tr>
-            <td>Оргтехника</td>
-            <td>принтер HP</td>
-            <td>25000</td>
+            <td><c:out value="${current.name}"/></td>
         </tr>
+        </c:forEach>
         </tbody>
+
     </table>
 
 </div>

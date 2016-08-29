@@ -3,6 +3,9 @@ package pricelist.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,9 +35,13 @@ public class PriceListController {
 
 
     @RequestMapping(path = "/price", method = RequestMethod.GET)
-    public ModelAndView filter(@ModelAttribute("filter") @Validated ProductFilter filter) throws UnsupportedEncodingException {
+    public ModelAndView filter(@ModelAttribute("filter") @Validated ProductFilter filter, Model model) throws UnsupportedEncodingException {
+
         List<Product> products = this.priceListService.findByFilter(filter);
-      //  products.forEach(product -> System.out.println(product.getName()));
+
+        model.addAttribute("products",products);
+//       products.forEach(product -> System.out.println(product.getName()));
+
         return new ModelAndView("pricelist");
     }
 
