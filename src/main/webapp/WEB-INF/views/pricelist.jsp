@@ -29,9 +29,8 @@
     <h4>Прайс лист</h4>
 
     <div class="row">
-        <form:form method="get" modelAttribute="filter">
+        <form:form method="GET" modelAttribute="filter">
             <div class="col s12">
-
                 <div class="row">
                     <div class="input-field col s3">
                         <form:input id="category" path="category" type="text" class="validate"/>
@@ -50,8 +49,10 @@
                         <label for="priceTo">Цена до:</label>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: right">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Найти
-                    <i class="material-icons right">send</i>
+                    <i class="material-icons right">search</i>
                 </button>
             </div>
         </form:form>
