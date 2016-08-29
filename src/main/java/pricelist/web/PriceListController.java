@@ -14,7 +14,6 @@ import pricelist.dao.ProductFilter;
 import pricelist.service.PriceListService;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -35,7 +34,8 @@ public class PriceListController {
 
         List<Product> products = this.priceListService.findByFilter(filter);
 
-        model.addAttribute("products", Collections.EMPTY_LIST);
+      //  model.addAttribute("products", Collections.EMPTY_LIST);
+        model.addAttribute("products", products);
         model.addAttribute("emptyFilter", filter.isEmpty());
 //       products.forEach(product -> System.out.println(product.getName()));
 
