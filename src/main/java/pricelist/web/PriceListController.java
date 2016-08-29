@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +14,11 @@ import pricelist.dao.ProductFilter;
 import pricelist.service.PriceListService;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class PriceListController {
-
-    @Autowired
-    private FilterValidator filterValidator;
 
     private PriceListService priceListService;
 
@@ -39,16 +35,10 @@ public class PriceListController {
 
         List<Product> products = this.priceListService.findByFilter(filter);
 
-        model.addAttribute("products",products);
+        model.addAttribute("products", Collections.EMPTY_LIST);
+        model.addAttribute("emptyFilter", filter.isEmpty());
 //       products.forEach(product -> System.out.println(product.getName()));
 
         return new ModelAndView("pricelist");
     }
-
-    /*
-    TODO вернуть валидатор
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(filterValidator);
-    }*/
 }

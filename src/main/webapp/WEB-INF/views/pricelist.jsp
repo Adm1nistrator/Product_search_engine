@@ -23,18 +23,15 @@
             Materialize.updateTextFields();
         });
     </script>
-
 </head>
 <body>
-
-
 <div class="container">
     <h4>Прайс лист</h4>
 
     <div class="row">
         <form:form method="get" modelAttribute="filter">
             <div class="col s12">
-                <form:errors path="*" />
+
                 <div class="row">
                     <div class="input-field col s3">
                         <form:input id="category" path="category" type="text" class="validate"/>
@@ -59,8 +56,6 @@
             </div>
         </form:form>
     </div>
-
-
     <table>
         <thead>
         <tr>
@@ -69,21 +64,34 @@
             <th data-field="price">Цена</th>
         </tr>
         </thead>
-
-        <tbody>
-
-
-        <c:forEach var="current" items="${products}">
-        <tr>
-            <td><c:out value="${current.name}"/></td>
-        </tr>
-        </c:forEach>
-        </tbody>
-
+        <c:choose>
+            <c:when test="${not empty products}">
+                <tbody>
+                <c:forEach var="current" items="${products}">
+                    <tr>
+                        <td><c:out value="${current.category.name}"/></td>
+                        <td><c:out value="${current.name}"/></td>
+                        <td><c:out value="${current.price}"/></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </c:when>
+            <c:when test="${emptyFilter}">
+                <tbody>
+                <tr>
+                    <td colspan="3">Для поиска товаров заполните хотя бы одно поле фильтра</td>
+                </tr>
+                </tbody>
+            </c:when>
+            <c:otherwise>
+                <tbody>
+                <tr>
+                    <td colspan="3">Товары не найдены</td>
+                </tr>
+                </tbody>
+            </c:otherwise>
+        </c:choose>
     </table>
-
 </div>
-
-
 </body>
 </html>
