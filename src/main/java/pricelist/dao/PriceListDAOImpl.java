@@ -22,7 +22,6 @@ public class PriceListDAOImpl implements PriceListDAO {
 
     @Override
     public List<Product> findByFilter(ProductFilter productFilter) {
-        //todo  сделать проверку на пустой фильтр
 
         if (productFilter.isEmpty())
         {
@@ -32,20 +31,18 @@ public class PriceListDAOImpl implements PriceListDAO {
         Session session = this.sessionFactory.getCurrentSession();
         Query query = session.createSQLQuery("SELECT cat.name AS categoryName, prod.id, prod.cat_id, prod.name, prod.price " +
                 "FROM prod INNER JOIN cat on prod.cat_id=cat.id " +
-                "where LOWER(cat.name) like LOWER(:categoryName) || '%' and LOWER(prod.name) LIKE LOWER(:productName) || '%' and prod.price between :priceFrom and :priceTo").addEntity(Product.class);
+                "where LOWER(cat.name) like LOWER(:categoryName) || '%' and LOWER(prod.name) LIKE LOWER(:productName) || '%' " +
+                "and prod.price between :priceFrom and :priceTo").addEntity(Product.class);
 
         query.setString("categoryName", productFilter.getCategory());
         query.setString("productName", productFilter.getProduct());
-        if (productFilter.getPriceFrom()==null)
-        {
-            query.setDouble("priceFrom", 0.0);
-        }
-        query.setDouble("priceFrom", productFilter.getPriceFrom());
-        if (productFilter.getPriceTo()==null)
-        {
-            query.setDouble("priceTo", Double.MAX_VALUE);
-        }
-        query.setDouble("priceTo", productFilter.getPriceTo());
+
+        Double priceFrom = productFilter.getPriceFrom();
+        query.setDouble("priceFrom", priceFrom==null ? 0.0:priceFrom);
+
+        Double priceTo = productFilter.getPriceTo();
+        query.setDouble("priceTo", priceTo==null ? Double.MAX_VALUE:priceTo);
+
 
         return query.list();
 
