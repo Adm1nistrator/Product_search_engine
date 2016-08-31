@@ -8,8 +8,8 @@ import org.springframework.util.StringUtils;
 public class ProductFilter {
     private String category;
     private String product;
-    private double priceFrom;
-    private double priceTo;
+    private Double priceFrom;
+    private Double priceTo;
 
     public String getCategory() {
         return category;
@@ -27,23 +27,23 @@ public class ProductFilter {
         this.product = product;
     }
 
-    public double getPriceFrom() {
+    public Double getPriceFrom() {
         return priceFrom;
     }
 
-    public void setPriceFrom(double priceFrom) {
+    public void setPriceFrom(Double priceFrom) {
         this.priceFrom = priceFrom;
     }
 
-    public double getPriceTo() {
+    public Double getPriceTo() {
         return priceTo;
     }
 
-    public void setPriceTo(double priceTo) {
+    public void setPriceTo(Double priceTo) {
         this.priceTo = priceTo;
     }
 
     public boolean isEmpty() {
-        return StringUtils.isEmpty(category) && StringUtils.isEmpty(product) && priceFrom == 0 && priceTo == 0;
+        return StringUtils.isEmpty(category) && StringUtils.isEmpty(product) && priceFrom==null && priceTo==null;
     }
 }

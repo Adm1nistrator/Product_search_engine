@@ -14,6 +14,7 @@ import pricelist.dao.ProductFilter;
 import pricelist.service.PriceListService;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -30,14 +31,15 @@ public class PriceListController {
 
 
     @RequestMapping(path = "/price", method = RequestMethod.GET)
-    public ModelAndView filter(@ModelAttribute("filter") @Validated ProductFilter filter, Model model) throws UnsupportedEncodingException {
+    public ModelAndView filter(@ModelAttribute("filter") ProductFilter filter, Model model) throws UnsupportedEncodingException {
 
-        List<Product> products = this.priceListService.findByFilter(filter);
+        if (filter.isEmpty())
+        {
+            model.addAttribute("products", Collections.EMPTY_LIST);
+            model.addAttribute("emptyFilter", filter.isEmpty());
+        }
 
-      //  model.addAttribute("products", Collections.EMPTY_LIST);
-        model.addAttribute("products", products);
-        model.addAttribute("emptyFilter", filter.isEmpty());
-//       products.forEach(product -> System.out.println(product.getName()));
+        model.addAttribute("products", this.priceListService.findByFilter(filter));
 
         return new ModelAndView("pricelist");
     }

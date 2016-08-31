@@ -6,6 +6,7 @@ import pricelist.dao.PriceListDAO;
 import pricelist.dao.ProductFilter;
 import pricelist.dao.Product;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,6 +24,11 @@ public class PriceListServiceImpl implements PriceListService {
     @Override
     @Transactional
     public List<Product> findByFilter(ProductFilter productFilter) {
+        if (productFilter.isEmpty())
+        {
+            return Collections.emptyList();
+        }
+
    return this.priceListDAO.findByFilter(productFilter);
     }
 

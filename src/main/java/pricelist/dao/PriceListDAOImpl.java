@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,6 +22,13 @@ public class PriceListDAOImpl implements PriceListDAO {
 
     @Override
     public List<Product> findByFilter(ProductFilter productFilter) {
+        //todo  сделать проверку на пустой фильтр
+
+        if (productFilter.isEmpty())
+        {
+            return Collections.emptyList();
+
+        }
         Session session = this.sessionFactory.getCurrentSession();
         Query query = session.createSQLQuery("SELECT cat.name AS categoryName, prod.id, prod.cat_id, prod.name, prod.price " +
                 "FROM prod INNER JOIN cat on prod.cat_id=cat.id " +
@@ -28,7 +36,15 @@ public class PriceListDAOImpl implements PriceListDAO {
 
         query.setString("categoryName", productFilter.getCategory());
         query.setString("productName", productFilter.getProduct());
+        if (productFilter.getPriceFrom()==null)
+        {
+            query.setDouble("priceFrom", 0.0);
+        }
         query.setDouble("priceFrom", productFilter.getPriceFrom());
+        if (productFilter.getPriceTo()==null)
+        {
+            query.setDouble("priceTo", Double.MAX_VALUE);
+        }
         query.setDouble("priceTo", productFilter.getPriceTo());
 
         return query.list();
