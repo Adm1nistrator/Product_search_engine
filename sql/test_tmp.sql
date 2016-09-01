@@ -1,1 +1,0 @@
-SELECT cat.name, prod.name, price FROM prod INNER JOIN cat on prod.cat_id=cat.id

@@ -35,9 +35,9 @@
                 destroy-method="close">
         <!-- настройки для подключения к базе данных -->
         <beans:property name="driverClassName" value="org.postgresql.Driver"/>
-        <beans:property name="url" value="jdbc:postgresql://localhost:5432/price_list"/>
-        <beans:property name="username" value="postgres"/>
-        <beans:property name="password" value="postgres"/>
+        <beans:property name="url" value="jdbc:postgresql://localhost:5432/pricelist"/>
+        <beans:property name="username" value="anykey"/>
+        <beans:property name="password" value="anykey"/>
     </beans:bean>
 
     <!-- Hibernate 5 SessionFactory Bean definition -->
