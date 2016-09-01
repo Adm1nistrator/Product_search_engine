@@ -1,4 +1,4 @@
-п»їCREATE TABLE cat (ID SERIAL PRIMARY KEY ,NAME  VARCHAR(255) NOT NULL);
+CREATE TABLE cat (ID SERIAL PRIMARY KEY ,NAME  VARCHAR(255) NOT NULL);
 CREATE TABLE prod (
   ID       SERIAL PRIMARY KEY,
   CAT_ID   int NOT NULL REFERENCES cat(id),
@@ -6,18 +6,16 @@ CREATE TABLE prod (
   PRICE    NUMERIC(16,2) NOT NULL
 );
 INSERT INTO cat (name) VALUES
-    ('РїСЂРёРЅС‚РµСЂ'),
-    ('РџСЂРёРЅС‚РµСЂ'),
-    ('РњРѕРЅРёС‚РѕСЂ'),
-    ('РњРѕРЅРёС‚РѕСЂ'),
-    ('РўРµР»РµРІРёР·РѕСЂ');
+    ('принтер'),
+    ('Принтер'),
+    ('Монитор'),
+    ('Монитор'),
+    ('Телевизор');
 
 INSERT INTO prod (cat_id, name, price) VALUES
     (1,'Hp 1018',4200),
     (3,'Samsung 4500',9800.45),
-    (5,'РЎР°РјСЃСѓРЅРі РўР’ 5000', 43286.76),
+    (5,'Самсунг ТВ 5000', 43286.76),
     (2,'Epson 7200 ',12300),
     (4,'Samsung 8734',6546);
-
-
 
