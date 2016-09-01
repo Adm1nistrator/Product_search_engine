@@ -40,12 +40,13 @@
                         <form:input id="productName" path="product" type="text" class="validate"/>
                         <label for="productName">Наименование</label>
                     </div>
+
                     <div class="input-field col s3">
-                        <form:input id="priceFrom" path="priceFrom" type="text" class="validate"/>
+                        <form:input id="priceFrom" path="priceFrom" type="number" step="any" min="0" class="validate"/>
                         <label for="priceFrom">Цена от:</label>
                     </div>
                     <div class="input-field col s3">
-                        <form:input id="priceTo" path="priceTo" type="text" class="validate"/>
+                        <form:input id="priceTo" path="priceTo" type="number" step="any" min="0" class="validate"/>
                         <label for="priceTo">Цена до:</label>
                     </div>
                 </div>
