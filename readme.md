@@ -11,7 +11,7 @@
 
 Для создания БД, пользователя, таблиц  необходимо запустить sql\exec.cmd который выполнить PSQL скрипт.
 При выполнеии скрипат потребуется указать пароль "anykey" от учетнйо записи "anykey"
- ```html
+ ```sql
  PSQL -U postgres -f create_db_and_user.sql
  PSQL -U anykey -d pricelist -f create_tables.sql
  ```
