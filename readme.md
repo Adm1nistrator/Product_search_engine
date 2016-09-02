@@ -54,7 +54,7 @@ INSERT INTO prod (cat_id, name, price) VALUES
 
 В результиате получится страктура в БД:
 
-![Структура БД "pricelist"](/diagram.png)
+![Структура БД "pricelist"](https://github.com/Adm1nistrator/Product_search_engine/blob/master/diagram.PNG)
 
 
 ##Параметры подключения к БД
