@@ -7,7 +7,7 @@
 <li> Цена от 
 <li> Цена до 
 
-## Создание БД, пользовател и таблиц
+## Создание БД, пользователя и таблиц
 
 Для создания БД, пользователя и таблиц необходимо запустить `sql\exec.cmd` который выполнит PSQL скрипт.
 
@@ -16,7 +16,7 @@
  PSQL -U anykey -d pricelist -f create_tables.sql
  ```
 
-От учётной записи postgres выполнится запрос из файла `create_db_and_user.sql` на создание БД `pricelist` и пользователя `anykey` с паролем `anykey`:
+Файла `create_db_and_user.sql` создает БД `pricelist` и пользователя `anykey`:
 
  ```
  DROP DATABASE IF EXISTS pricelist;
@@ -26,8 +26,8 @@
  GRANT ALL privileges ON DATABASE pricelist TO anykey;
  ```
 
-Вторая строка `exec.cmd` выполнит запрос из файла `create_tables.sql` для создания таблиц в БД `pricelist` с тестовым наполнением
-***Файл `create_tables.sql` должен быть в кодировке windows-1251***
+Файла `create_tables.sql` создает таблицы с тестовым наполнением
+*Файл `create_tables.sql` должен быть в кодировке windows-1251*
 При выполнении `exec.cmd` потребуется указать пароль `anykey` от учетной записи `anykey`.
 
  ```
@@ -53,13 +53,13 @@ INSERT INTO prod (cat_id, name, price) VALUES
     (4,'Samsung 8734',6546);
  ```
 
-В результиате получится страктура в БД:
+Структура БД:
 
 ![Структура БД "pricelist"](https://github.com/Adm1nistrator/Product_search_engine/blob/master/diagram.PNG)
 
 ##Параметры подключения к БД
 
-В файле `servlet-context.xml` по пути `\src\main\webapp\WEB-INF\spring\appServlet` необходимо задать параметры для подключения к БД `pricelist`:
+Подключение к БД описано в файле `\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml`:
  ```html
       <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
                   destroy-method="close">

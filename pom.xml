@@ -17,7 +17,7 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <tomcat.version>8.5.3</tomcat.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <postgresql.version>9.4.1209</postgresql.version>
 
     </properties>
 
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1208.jre7</version>
+            <version>${postgresql.version}</version>
         </dependency>
 
 
