@@ -9,14 +9,14 @@
 
 ## Создание БД, пользовател и таблиц
 
-Для создания БД, пользователя, таблиц  необходимо запустить sql\exec.cmd который выполнить PSQL скрипт.
-При выполнеии скрипат потребуется указать пароль "anykey" от учетнйо записи "anykey"
+Для создания БД, пользователя и таблиц необходимо запустить `sql\exec.cmd` который выполнит PSQL скрипт.
+
  ```
  PSQL -U postgres -f create_db_and_user.sql
  PSQL -U anykey -d pricelist -f create_tables.sql
  ```
 
-От учётной записи postgres выполнится запрос из файла create_db_and_user.sql на создание БД с именем "pricelist" и пользователем "anykey" с паролем "anykey" create_db_and_user.sql:
+От учётной записи postgres выполнится запрос из файла `create_db_and_user.sql` на создание БД `pricelist` и пользователя `anykey` с паролем `anykey`:
 
  ```
  DROP DATABASE IF EXISTS pricelist;
@@ -26,8 +26,9 @@
  GRANT ALL privileges ON DATABASE pricelist TO anykey;
  ```
 
-Вторая сточка sql\exec.cmd выполнит запрос из файлик create_tables.sql для создания таблиц в БД "pricelist" с тестовым наполнением
-***Файл create_tables.sql должен быть в кодировке windows-1251***
+Вторая строка `exec.cmd` выполнит запрос из файла `create_tables.sql` для создания таблиц в БД `pricelist` с тестовым наполнением
+***Файл `create_tables.sql` должен быть в кодировке windows-1251***
+При выполнении `exec.cmd` потребуется указать пароль `anykey` от учетной записи `anykey`.
 
  ```
 CREATE TABLE cat (ID SERIAL PRIMARY KEY ,NAME  VARCHAR(255) NOT NULL);
@@ -56,10 +57,9 @@ INSERT INTO prod (cat_id, name, price) VALUES
 
 ![Структура БД "pricelist"](https://github.com/Adm1nistrator/Product_search_engine/blob/master/diagram.PNG)
 
-
 ##Параметры подключения к БД
 
-В файле servlet-context.xml  \src\main\webapp\WEB-INF\spring\appServlet необходимо задать параметры для подключения к БД
+В файле `servlet-context.xml` по пути `\src\main\webapp\WEB-INF\spring\appServlet` необходимо задать параметры для подключения к БД `pricelist`:
  ```html
       <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
                   destroy-method="close">
@@ -72,7 +72,7 @@ INSERT INTO prod (cat_id, name, price) VALUES
  ```
 ##Адрес пользовательского интерфейса
 
-По адресу {имя_сервера:порт}/price находится интерфейс для поиска товаров в прайс-листе
+По адресу `{имя_сервера:порт}/price` находится интерфейс для поиска товаров в прайс-листе
 
 http://localhost:8080/price
 
