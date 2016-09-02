@@ -11,14 +11,14 @@
 
 Для создания БД, пользователя, таблиц  необходимо запустить sql\exec.cmd который выполнить PSQL скрипт.
 При выполнеии скрипат потребуется указать пароль "anykey" от учетнйо записи "anykey"
- ```sql
+ ```
  PSQL -U postgres -f create_db_and_user.sql
  PSQL -U anykey -d pricelist -f create_tables.sql
  ```
 
 От учётной записи postgres выполнится запрос из файла create_db_and_user.sql на создание БД с именем "pricelist" и пользователем "anykey" с паролем "anykey" create_db_and_user.sql:
 
- ```html
+ ```
  DROP DATABASE IF EXISTS pricelist;
  CREATE DATABASE pricelist ENCODING = 'UTF8';
  DROP USER IF EXISTS anykey;
@@ -29,7 +29,7 @@
 Вторая сточка sql\exec.cmd выполнит запрос из файлик create_tables.sql для создания таблиц в БД "pricelist" с тестовым наполнением
 ***Файл create_tables.sql должен быть в кодировке windows-1251***
 
- ```html
+ ```
 CREATE TABLE cat (ID SERIAL PRIMARY KEY ,NAME  VARCHAR(255) NOT NULL);
 CREATE TABLE prod (
   ID       SERIAL PRIMARY KEY,
