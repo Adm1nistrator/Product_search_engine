@@ -16,7 +16,7 @@
  PSQL -U anykey -d pricelist -f create_tables.sql
  ```
 
-Файла `create_db_and_user.sql` создает БД `pricelist` и пользователя `anykey`:
+Файл `create_db_and_user.sql` создает БД `pricelist` и пользователя `anykey`:
 
  ```
  DROP DATABASE IF EXISTS pricelist;
@@ -26,9 +26,8 @@
  GRANT ALL privileges ON DATABASE pricelist TO anykey;
  ```
 
-Файла `create_tables.sql` создает таблицы с тестовым наполнением
-*Файл `create_tables.sql` должен быть в кодировке windows-1251*
-При выполнении `exec.cmd` потребуется указать пароль `anykey` от учетной записи `anykey`.
+Файл `create_tables.sql` должен быть в кодировке windows-1251, создает таблицы с тестовым наполнением.
+При выполнении `exec.cmd` потребуется указать пароль `anykey`.
 
  ```
 CREATE TABLE cat (ID SERIAL PRIMARY KEY ,NAME  VARCHAR(255) NOT NULL);
