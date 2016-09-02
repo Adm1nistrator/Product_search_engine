@@ -26,7 +26,7 @@
  GRANT ALL privileges ON DATABASE pricelist TO anykey;
  ```
 
-Файл `create_tables.sql` должен быть в кодировке windows-1251, создает таблицы с тестовым наполнением.
+Файл `create_tables.sql` создает таблицы с тестовым наполнением, должен быть в кодировке windows-1251
 При выполнении `exec.cmd` потребуется указать пароль `anykey`.
 
  ```
